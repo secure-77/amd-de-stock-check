@@ -10,3 +10,5 @@ Check if a disired product is available on the germand AMD shop page and if yes,
 # JavaScript
 There is also a javascript file wich alert you, you need a browser plugin or service to let this run continously.
 You dont need the javascript file for the python version.
+
+dont let win the scalper! 

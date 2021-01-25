@@ -8,18 +8,22 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+# config here
+url = 'https://www.amd.com/de/direct-buy/de'
 desiredProducts = ['5900X' , '5600X', '6800 XT']
-availableProducts = []
-notavailableProducts = []
 sender_email = "mail@from.de"
 receiver_email = "mail@to.de"
 password = "your smtp pass"
 smtp_server = "your.smtp.server"
 
+# init
+availableProducts = []
+notavailableProducts = []
+
 
 def checkStock():
     try:
-        url = 'https://www.amd.com/de/direct-buy/de'
+        
         user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36'
         accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
         cache = 'max-age=0'
@@ -84,7 +88,7 @@ def sendMail(error):
     text = f"""\
     Products availible: {productsAV}
     Products still not not availible: {productsNotAV}
-    https://www.amd.com/de/direct-buy/de
+    {url}
     {error}
     """
 
@@ -94,7 +98,7 @@ def sendMail(error):
     <p>Products available: {productsAV}<br>
     Products still not not available: {productsNotAV}<br>
     <br>
-    Shop Link: <a href=\"https://www.amd.com/de/direct-buy/de\">https://www.amd.com/de/direct-buy/de</a>
+    Shop Link: <a href=\"{url}\">{url}</a>
     </p>
     <p>{error}</p>
     </body>
@@ -122,7 +126,7 @@ error = checkStock()
 productsAV = ',  '.join(availableProducts)
 productsNotAV = ',  '.join(notavailableProducts)
 
-
+# if error on request or products available -> send mail
 if error or len(availableProducts) > 0:
     sendMail(str(error))
 

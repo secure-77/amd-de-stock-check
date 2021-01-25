@@ -3,7 +3,7 @@
 Check if a disired product is available on the germand AMD shop page and if yes, send you an email. run this as task or cron job to let you inform about the stock status.
 
 ## Requirements
-- python2
+- python3
 - pip install bs4
 - pip install lxml
 

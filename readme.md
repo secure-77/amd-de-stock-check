@@ -1,4 +1,4 @@
-# AMD Stock checker
+# AMD stock checker
 
 Check if a disired product is available on the germand AMD shop page and if yes, send you an email. run this as task or cron job to let you inform about the stock status.
 
